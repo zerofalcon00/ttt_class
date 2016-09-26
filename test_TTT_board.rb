@@ -44,31 +44,37 @@ class TestBoard < Minitest::Test
 	def test_for_a_win_with_X
 		board = Board.new()
 		board.ttt_board = ["X","O","X","X","O","O","X","X","O"]
-		marker = "X"
+		marker = "X" 
 		assert_equal(true, board.check_for_win?(marker))
 	end
 
 	def test_for_a_win_with_O
 		board = Board.new()
 		board.ttt_board = ["X","O","X","O","O","O","O","O","X"]
-		marker = "O"
+		marker = "O" 
 		assert_equal(true, board.check_for_win?(marker))
 	end
 
 	def test_for_a_win_with_xs
 		board = Board.new()
 		board.ttt_board = ["O","O","X","X","O","X","X","O","X"]
-		marker = "X"
+		marker = "X" 
 		assert_equal(true, board.check_for_win?(marker))
 	end
 
 	def test_for_a_win_returns_false
 		board = Board.new()
-		board.ttt_board = ["O","X","X","X","O","X","X","O","X"]
-		marker = "O"
+		board.ttt_board = ["O","X","O","X","O","X","X","O","X"]
+		marker = "O" 
 		assert_equal(false, board.check_for_win?(marker))
 	end
 
+	def test_for_a_win_returns_false1
+		board = Board.new()
+		board.ttt_board = ["O","O","O","O","O","O","X","O","X"]
+		marker = "X" 
+		assert_equal(false, board.check_for_win?(marker))
+	end
 
 
 end
