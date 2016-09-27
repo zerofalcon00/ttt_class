@@ -6,6 +6,10 @@ game = ConsoleGame.new
 
 game.ask_to_play
 
-game.marker_choice
+p1_marker = game.marker_choice
 
-game.ask_to_player_human_or_cpu
+p2_marker = game.ask_to_player_human_or_cpu(p1_marker)
+
+
+
+

@@ -16,6 +16,8 @@ class Board
 
 	def check_for_tie?
 		ttt_board.count(" ") == 0
+			
+
 	end
 
 	def check_for_win?(marker)

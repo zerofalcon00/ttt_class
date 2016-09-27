@@ -15,6 +15,4 @@ class ConsoleAI
 			get_move(board)
 		end
 	end
-
-
 end

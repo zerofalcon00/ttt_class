@@ -23,5 +23,6 @@ class RandomAI
 		
 		move.sample
 
+
 	end
 end

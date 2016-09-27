@@ -6,32 +6,49 @@ require_relative "board.rb"
 
 class ConsoleGame
 
-	attr_accessor :p1, :p2, :board, :p1_marker, :p2_marker
+	attr_accessor :p1, :p2, :board, :p1_marker, :p2_marker, :current_player
 
-	def initialize()
-		@p1 
-		@p2 
+	def initialize(p1, p2)
+
+		@p1 = p1
+		@p2 = p2
 		@board = Board.new
-		@p1_marker = p1_marker
-		@p2_marker = p2_marker
-		# @current_player = change_player(player2)
+		# @p1_marker = p1_marker
+		# @p2_marker = p2_marker
+		@current_player = p2
 		
 	end
 
-	def display_board(board)
-		puts " #{board[0]} | #{board[1]} | #{board[2]} "
-		puts "-----------"
-		puts " #{board[3]} | #{board[4]} | #{board[5]} "
-		puts "-----------"
-		puts " #{board[6]} | #{board[7]} | #{board[8]} "
+	def start_game
+		"Welcome to tic tac toe!"
 	end
 
-	def change_player(player)
+	def display_board()
 		
-		if player == p1
-			player = p2
-		else player == p2
+		puts " #{board.ttt_board[0]} | #{board.ttt_board[1]} | #{board.ttt_board[2]} "
+		puts "-----------"
+		puts " #{board.ttt_board[3]} | #{board.ttt_board[4]} | #{board.ttt_board[5]} "
+		puts "-----------"
+		puts " #{board.ttt_board[6]} | #{board.ttt_board[7]} | #{board.ttt_board[8]} "
+
+		if current_player == p2
 			player = p1
+		else 
+			player = p2
+		end
+
+		if board.check_for_win?(current_player.marker) == false || board.check_for_tie? == 0
+			puts "It is #{player.marker}'s turn."
+		end
+
+	end
+
+	def change_player()
+		
+		if @current_player == p1
+			@current_player = p2
+		else @current_player == p2
+			@current_player = p1
 		end
 	end
 		
@@ -60,35 +77,61 @@ class ConsoleGame
 		if player_choice == "X"
 		
 			puts "Player 1 is #{player_choice} and Player 2 is O" 
-			p1_marker = "X" 
-			p2_marker = "O"
+			
 		elsif player_choice == "O"
 
 			puts "Player 1 is O and Player 2 is X"
-			p1_marker = "O" 
-			p2_marker = "X"
-
+			
 		else
 			puts "Please enter valid character"
 			player_choice = marker_choice
 		end
-		puts player_choice
+		player_choice
 	end
 
-	def ask_to_player_human_or_cpu
+	def ask_to_player_human_or_cpu(p1_marker)
 		puts "Would you like to play CPU or Human"
-		player_choice = gets.chomp.upcase
+		player_choice = gets.chomp.upcase()
+
+		if p1_marker == "X"
+			p2_marker = "O"
+		else p1_marker == "O"
+			p2_marker = "X"
+		end
 
 		if player_choice == "CPU"
 			p2 = RandomAi.new
 		else player_choice == "HUMAN"
-			# p2 = ConsoleAI.new(p2_marker)
-			puts p2_marker
+			p2 = ConsoleAI.new(p2_marker)
+			# puts p2_marker
 		end
+		p2
 	end
 
 
+	def game_over?
+		board.check_for_win?(current_player.marker) || board.check_for_tie?
+	end
 
+	def get_player_move
+		current_player.get_move(board.ttt_board)
+	end
+
+	def make_move(move)
+		board.update_board(move, current_player.marker)
+	end
+
+	def player
+		current_player
+	end
+
+	def winner
+		if board.check_for_win?(current_player.marker)
+			puts "#{current_player.marker} is the WINNER!"
+		else
+			puts "The game is a TIE!"
+		end
+	end
 
 
 
