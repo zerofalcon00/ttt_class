@@ -6,6 +6,19 @@ class Board
 		@ttt_board = [" "," "," "," "," "," "," "," "," "]
 	end
 
+	def board_with_positions()
+		new_board = []
+		ttt_board.each_with_index do |value, index|
+			if value == "X" || value == "O"
+				new_board.push(value)
+			else
+				new_board.push(index + 1)
+			end
+		end
+		new_board
+
+	end
+
 	def update_board(index, marker)
 		ttt_board[index] = marker
 	end
@@ -16,8 +29,6 @@ class Board
 
 	def check_for_tie?
 		ttt_board.count(" ") == 0
-			
-
 	end
 
 	def check_for_win?(marker)

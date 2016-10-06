@@ -76,5 +76,15 @@ class TestBoard < Minitest::Test
 		assert_equal(false, board.check_for_win?(marker))
 	end
 
+	def test_board_with_positions
+		board = Board.new()
 
+		assert_equal([1,2,3,4,5,6,7,8,9], board.board_with_positions)
+	end
+
+	def test_board_with_markers
+		board = Board.new
+		board.ttt_board = [" ","X"," "," "," ","O"," "," "," "]
+		assert_equal([1,"X",3,4,5,"O",7,8,9], board.board_with_positions)
+	end
 end

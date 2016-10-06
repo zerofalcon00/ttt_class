@@ -2,7 +2,7 @@ require_relative "sequential_ai.rb"
 require_relative "random_ai.rb"
 require_relative "console_ai.rb"
 require_relative "board.rb"
-
+require_relative "class_unbeatable_ai.rb"
 
 class ConsoleGame
 
@@ -37,7 +37,7 @@ class ConsoleGame
 			player = p2
 		end
 
-		if board.check_for_win?(current_player.marker) == false || board.check_for_tie? == 0
+		if board.check_for_win?(current_player.marker) == false && board.check_for_tie? == false
 			puts "It is #{player.marker}'s turn."
 		end
 
@@ -132,6 +132,17 @@ class ConsoleGame
 			puts "The game is a TIE!"
 		end
 	end
+
+	# def replay
+	# 	answer = gets.chomp.upcase
+
+	# 	puts "Would you like to play again?"
+	# 	if answer == "YES"
+	# 		ConsoleGame.new(p1,p2)
+	# 	elsif answer == "NO"
+	# 		puts "GoodBye!"
+	# 	else
+
 
 
 
