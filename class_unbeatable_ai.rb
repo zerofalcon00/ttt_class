@@ -146,83 +146,84 @@ class UnbeatableAI
 		result 
 	end
 
-	# def check_for_block_fork(ttt_board)
-	# 	puts mar
-	# 	block_fork_combinations = [[ttt_board[0],ttt_board[1],ttt_board[2]],
-	# 						[ttt_board[3],ttt_board[4],ttt_board[5]],
-	# 						[ttt_board[6], ttt_board[7], ttt_board[8]],
-	# 						[ttt_board[0], ttt_board[3], ttt_board[6]],
-	# 						[ttt_board[1],ttt_board[4], ttt_board[7]],
-	# 						[ttt_board[2],ttt_board[5],ttt_board[8]], 
-	# 						[ttt_board[0], ttt_board[4], ttt_board[8]],
-	# 						[ttt_board[2],ttt_board[4],ttt_board[6]]]
+	def check_for_block_fork(ttt_board)
+	
+		block_fork_combinations = [[ttt_board[0],ttt_board[1],ttt_board[2]],
+							[ttt_board[3],ttt_board[4],ttt_board[5]],
+							[ttt_board[6], ttt_board[7], ttt_board[8]],
+							[ttt_board[0], ttt_board[3], ttt_board[6]],
+							[ttt_board[1],ttt_board[4], ttt_board[7]],
+							[ttt_board[2],ttt_board[5],ttt_board[8]], 
+							[ttt_board[0], ttt_board[4], ttt_board[8]],
+							[ttt_board[2],ttt_board[4],ttt_board[6]]]
 
-	# 	block_fork_positions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+		block_fork_positions = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
-	# 	# if marker == "X"
-	# 	# 	p2_marker = "O"
-	# 	# else
-	# 	# 	p2_marker = "X"
-	# 	# end
-	# 	# puts p2_marker
-
-	# 	# block_fork_line = []
-	# 	# block_fork_spot = []
-	# 	# i = []
-	# 	# i2 = 0
-	# 	# result = 10
-	# 	# e = 0
+		if marker == "X"
+			p2_marker = "O"
+		else
+			p2_marker = "X"
+		end
 		
-	# 	# block_fork_combinations.each_with_index do |block_forking_line, index|
-	# 	# 	if block_forking_line.count(p2_marker) == 1 && block_forking_line.count(" ") == 2
-	# 	# 		block_fork_line.push(block_forking_line)
-	# 	# 		i.push(index)
-	# 	# 		e = index
-	# 	# 	end
-	# 	# end
 
-	# 	# i.each do |index|
-	# 	# 	block_fork_spot.push(block_fork_positions[index])
-	# 	# end
+		block_fork_line = []
+		block_fork_spot = []
+		i = []
+		i2 = 0
+		result = 10
+		e = 0
+		
+		block_fork_combinations.each_with_index do |block_forking_line, index|
+			if block_forking_line.count(p2_marker) == 1 && block_forking_line.count(" ") == 2
+				block_fork_line.push(block_forking_line)
+				i.push(index)
+				e = index
+			end
+		end
+		
+		i.each do |index|
+			block_fork_spot.push(block_fork_positions[index])
+		end
 
-	# 	# block_fork_spot = block_fork_spot.flatten
+		block_fork_spot = block_fork_spot.flatten
 
-	# 	# if block_fork_spot.detect { |match| block_fork_spot.count(match) > 1} == nil
-	# 	# 	result = 10
-	# 	# else
-	# 	# 	result = block_fork_spot.detect { |match| block_fork_spot.count(match) > 1}
-	# 	# end
-	# 	# result	[6]	
+		if block_fork_spot.detect { |match| block_fork_spot.count(match) > 1} == nil
+			result = 10
+		else
+			result = block_fork_spot.detect { |match| block_fork_spot.count(match) > 1}
+		end
+		result	
 
-	# 	# marker_lines = []
-	# 	# choice = 10
+		marker_lines = []
+		choice = 10
 
-	# 	# block_fork_combinations.each_with_index do | marker_line, index|
-	# 	# 	if marker_line.count(marker) == 1 && marker_line.count(" ") == 2
-				
-	# 	# 	end
-	# 	# end
-	# 	# puts p2_marker
-	# 	# pick_to_force_block = marker_lines.index(" ")
-	# 	# pick_marker = marker_lines.index(" ")
-	# 	# puts marker_lines
-	# 	# marker_lines(pick_marker) = marker
-	# 	# check_spot_for_fork_index = marker_lines.index(" ")
-	# 	# check_spot_for_fork = block_fork_positions[e][check_spot_for_fork_index]
+		block_fork_combinations.each_with_index do | marker_line, index|
+			if marker_line.count(marker) == 1 && marker_line.count(" ") == 2
+				puts marker_line
+			end
+		end
+		
+		pick_to_force_block = marker_lines.index(" ")
+		pick_marker = marker_lines.index(" ")
+		# marker_lines(pick_marker) = marker
+		check_spot_for_fork_index = marker_lines.index(" ")
+		check_spot_for_fork = block_fork_positions[e][check_spot_for_fork_index]
 
-	# 	# if check_spot_for_fork == result
-	# 	# 	choice = result
-	# 	# elsif check_spot_for_fork != result
-	# 	# 	choice = pick_to_force_block
-	# 	# else
-	# 	# 	choice = 10
-	# 	# end
-	# 	# choice
-	# end
+		if check_spot_for_fork == result
+			choice = result
+		elsif check_spot_for_fork != result
+			choice = pick_to_force_block
+		else
+			choice = 10
+		end
+		choice
+
+	end
 end
 
-# player = UnbeatableAI.new("X")
-# ttt_board = ["X"," "," "," ","O"," "," "," ","X"]
-# puts player.get_move(ttt_board)
+player = UnbeatableAI.new("O")
+ttt_board = ["X"," "," "," "," ","","X","O","X"]
+
+
 
 

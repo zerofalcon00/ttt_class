@@ -40,7 +40,7 @@ class TestUnbeatableAI < Minitest::Test
 
 	def test_for_a_fork_2
 		player = UnbeatableAI.new("O")
-		assert_equal(1, player.get_move(["X"," "," "," "," "," ","X","O","X",]))
+		assert_equal(4, player.get_move(["X"," "," "," "," "," ","X","O","X",]))
 	end
 
 	# def test_check_for_block_fork

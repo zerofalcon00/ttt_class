@@ -16,7 +16,7 @@
 		<td><%=board[8]%></td>
 	</tr>
 </table>
-"it is your turn pick a valid spot."<br>
+<%= "#{current_player.marker} it is your turn pick a valid spot."%><br>
 <form method = "post" action = "get_player_move">
 	<input type = "number" name = "move_spot">
 	<input type = "submit">
