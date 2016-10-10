@@ -23,7 +23,8 @@ class Board
 	end
 
 	def valid_spot?(index)
-		index >= 0 && index <= 8 && ttt_board[index] == "(index + 1)"
+		index = (index - 1)
+		index >= 0 && index <= 8 && ttt_board[index] == "#{(index + 1)}"
 	end
 
 	def check_for_tie?
@@ -56,8 +57,8 @@ class Board
 		# ttt_board[0] == marker && ttt_board[4] == marker && ttt_board[8] == marker 
 	end
 
-	def game_over(marker)
-		check_for_win?(marker) ||
+	# def game_over(marker)
+	# 	check_for_win?(marker) ||
 
 
 
