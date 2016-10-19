@@ -24,7 +24,7 @@ class Board
 
 	def valid_spot?(index)
 		index = (index - 1)
-		index >= 0 && index <= 8 && ttt_board[index] == "#{(index + 1)}"
+		index >= 0 && index <= 8 && ttt_board[index] == " "	
 	end
 
 	def check_for_tie?

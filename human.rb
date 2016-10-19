@@ -1,7 +1,8 @@
-def Human
-	attr_reader :marker
+class Human
+	attr_reader :marker, :name
 
-	def initalize(marker)
+	def initialize(marker, user)
+		@name = user
 		@marker = marker
 	end
 

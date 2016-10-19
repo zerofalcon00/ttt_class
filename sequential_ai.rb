@@ -9,4 +9,8 @@ class SequentialAI
 	def get_move(board)
 		board.index(" ")
 	end
+
+	# def valid_space(board, choice)
+	# 	board[choice] != "X" || board[choice] != "O"
+	# end
 end

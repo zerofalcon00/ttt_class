@@ -1,23 +1,23 @@
 <!-- <form action = "returned_move" method = "post"> -->
-<table>
+<table id='board'>
 	<tr>
-		<td><%=board[0]%></td>
-		<td><%=board[1]%></td>
-		<td><%=board[2]%></td>
+		<td id='top-left'><%=board[0]%></td>
+		<td id='top-center'><%=board[1]%></td>
+		<td id='top-right'><%=board[2]%></td>
 	</tr>
 	<tr>
-		<td><%=board[3]%></td>
-		<td><%=board[4]%></td>
-		<td><%=board[5]%></td>
+		<td id='middle-left'><%=board[3]%></td>
+		<td id='middle-center'><%=board[4]%></td>
+		<td id='middle-right'><%=board[5]%></td>
 	</tr>
 	<tr>
-		<td><%=board[6]%></td>
-		<td><%=board[7]%></td>
-		<td><%=board[8]%></td>
+		<td id='bottom-left'><%=board[6]%></td>
+		<td id='bottom-center'><%=board[7]%></td>
+		<td id='bottom-right'><%=board[8]%></td>
 	</tr>
 </table>
-<%= "#{current_player.marker} it is your turn pick a valid spot."%><br>
-<form method = "post" action = "get_player_move">
+<p><%= "#{current_player.marker} it is your turn pick a valid spot."%></p>
+<form method = "post" action = "get_move">
 	<input type = "number" name = "move_spot">
 	<input type = "submit">
 </form>

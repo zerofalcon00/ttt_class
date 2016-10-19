@@ -1,8 +1,9 @@
 class RandomAI
 
-	attr_reader :marker
+	attr_reader :marker, :name
 
-	def initialize(marker)
+	def initialize(marker, name)
+		@name = name
 		@marker = marker
 	end
 
@@ -26,7 +27,7 @@ class RandomAI
 		# 	i = i + 1
 		# end
 
-		n = rand(0..8)
+		n = rand(1..9)
 
 		if valid_space(board, n) == false
 			get_move(board)

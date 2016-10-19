@@ -4,21 +4,26 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h4>"Player 1 is X choose your AI"<h4>
-<select name = "player_1">
+<p>Player 1 you are X. What is your name?</p>
+<form action="/output" method="post">
+	<input type="text" name="player_1">
+	<input type="submit">
+</form>
+
+<!-- <select name = "player_1">
   <option value="sequential_ai">sequential_ai</option>
   <option value="random_ai">random_ai</option>
-  <option value="console_ai">human</option>
-</select>
-<h4>"Player 2 is O choose your AI"<h4>
+  <option value="human">human</option>
+</select><br> -->
+<!-- <h4>"Player 2 is O choose your AI"<h4>
 <select name = "player_2">
 	<option value="sequential_ai">sequential_ai</option>
 	<option value="random_ai">random_ai</option>
-	<option value="console_ai">human</option>
-</select><br><br>
+	<option value="human">human</option>
+</select><br><br> -->
 
-<input type = "submit">
-
+<!-- <input type = "submit">
+ -->
   
 </body>
 </html>

@@ -1,0 +1,28 @@
+#top-center, #middle-center, #bottom-center {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+#middle-left, #middle-center, #middle-right {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+#board tr td{
+	width: 80px; 
+	height:80px;
+	font-size: 30px;
+	text-align: center;
+}
+#board {
+	margin: 0 auto;
+    margin-top: 50px;
+}
+p {
+	text-align: center;
+}
+h1 {
+	text-align: center;
+}
+form {
+	text-align: center;
+}
