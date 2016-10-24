@@ -6,8 +6,8 @@ require_relative "sequential_ai.rb"
 require_relative "random_ai.rb"
 require_relative "human.rb"
 require_relative "board.rb"
-require_relative "local_env.rb"
-#load "./local_env.rb" if File.exists?("./local_env.rb")
+# require_relative "local_env.rb"
+load "./local_env.rb" if File.exists?("./local_env.rb")
 
 
 enable :sessions
