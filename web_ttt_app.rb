@@ -210,7 +210,6 @@ def read_csv_from_s3
 	bucket = 'ttt-class'
 	object_from_s3 = AWS::S3::S3Object.value(file, bucket)
 	# csv = CSV.parse(object_from_s3)
-	object_from_s3
 	# file = File.open('summary.csv', "r")
 	# contents = file.read
 	#  name_of_output_file = "summary2.csv"
@@ -224,6 +223,7 @@ def create_result_array(content)
 	file = content
 	result = file.split("\n")
 	array = Array.new
-	result.each { |x| array.push(x.split(":"))}
+	puts "result is #{content}"
+	result.each { |x| array.push(x.split(","))}
 	array
 end
