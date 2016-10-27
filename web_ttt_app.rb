@@ -6,6 +6,7 @@ require_relative "sequential_ai.rb"
 require_relative "random_ai.rb"
 require_relative "human.rb"
 require_relative "board.rb"
+require_relative "class_unbeatable_ai.rb"
 # require_relative "local_env.rb"
 load "./local_env.rb" if File.exists?("./local_env.rb")
 
@@ -61,9 +62,13 @@ post '/get_p2' do
 	player_2 = params[:player_2]
 	if player_2 == "human"
 		erb :get_p2_name
-	else
+	elsif player_2 == "random_ai"
 		user = "CPU"
 		session[:p2] = RandomAI.new("O", user)
+		redirect '/get_move'
+	else player_2 == "class_unbeatable_ai"
+		user = "CPU(hard)"
+		session[:p2] = UnbeatableAI.new("O", user)
 		redirect '/get_move'
 	end
 end
@@ -129,6 +134,7 @@ get "/make_move" do
 		p1 = "#{session[:p1].name}"
 		p2 = "#{session[:p2].name}"
 		winner = "#{session[:current_player].name}"
+		write_file_to_s3(p1, p2, winner, date_time)
 		write_to_csv(p1, p2, winner, date_time)
 
 		redirect "/tie"
@@ -212,10 +218,10 @@ def read_csv_from_s3
 	# csv = CSV.parse(object_from_s3)
 	# file = File.open('summary.csv', "r")
 	# contents = file.read
-	#  name_of_output_file = "summary2.csv"
-	#  write_to_file = File.open(name_of_output_file, "w")
-	#  write_to_file.puts contents
-	#  write_to_file.close
+	# name_of_output_file = "summary2.csv"
+	# write_to_file = File.open(name_of_output_file, "w")
+	# write_to_file.puts contents
+	# write_to_file.close
 	# contents
 end	
 

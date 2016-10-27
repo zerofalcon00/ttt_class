@@ -1,7 +1,8 @@
 class UnbeatableAI
 	attr_accessor :marker
 
-	def initialize(marker)
+	def initialize(marker, name)
+		@name = name
 		@marker = marker
 	end
 
@@ -15,6 +16,14 @@ class UnbeatableAI
 			move = check_for_fork(ttt_board)
 		# else check_for_block_fork(ttt_board) <= 8
 		# 	move = check_for_block_fork(ttt_board)
+		# elsif check_for_center(ttt_board) <=8
+		# 	move = check_for_center(ttt_board)
+		# elsif check_for_corner(ttt_board) <=8
+		# 	move = check_for_corner(ttt_board)
+		# elsif check_for_empty_corner(ttt_board) <= 8
+		# 	move = check_for_empty_corner(ttt_board)
+		# else check_for_empty_side(ttt_board) <= 8
+		# 	move = check_for_empty_side(ttt_board)
 		end
 		move
 	end
@@ -56,7 +65,7 @@ class UnbeatableAI
 		# else
 		# 	pick = win_positions[i][i2]
 		# end
-		pick
+		pick = pick + 1
 	end
 
 	def check_for_block(ttt_board)
@@ -102,7 +111,7 @@ class UnbeatableAI
 		else
 			pick = block_positions[i][i2]
 		end
-		pick
+		pick = pick + 1
 
 	end
 
@@ -143,7 +152,13 @@ class UnbeatableAI
 		else
 			result = fork_spot.detect { |match| fork_spot.count(match) > 1}
 		end
-		result 
+		
+		if ttt_board[result] != " "
+			result = 10
+		else
+			result
+		end
+		result = result + 1
 	end
 
 	def check_for_block_fork(ttt_board)
@@ -169,60 +184,88 @@ class UnbeatableAI
 		block_fork_line = []
 		block_fork_spot = []
 		i = []
-		i2 = 0
+		blah = []
+		
 		result = 10
-		e = 0
+	
 		
-		block_fork_combinations.each_with_index do |block_forking_line, index|
-			if block_forking_line.count(p2_marker) == 1 && block_forking_line.count(" ") == 2
-				block_fork_line.push(block_forking_line)
+		block_fork_combinations.each_with_index do |block_line, index|
+			if block_line.count(p2_marker) == 1 && block_line.count(" ") == 2
+				block_fork_line.push(block_line)
 				i.push(index)
-				e = index
+				blah.push(block_fork_positions[index])
+
 			end
 		end
-		
-		i.each do |index|
-			block_fork_spot.push(block_fork_positions[index])
-		end
 
-		block_fork_spot = block_fork_spot.flatten
+		blah = blah.flatten
 
-		if block_fork_spot.detect { |match| block_fork_spot.count(match) > 1} == nil
-			result = 10
-		else
-			result = block_fork_spot.detect { |match| block_fork_spot.count(match) > 1}
-		end
-		result	
-
-		marker_lines = []
-		choice = 10
-
-		block_fork_combinations.each_with_index do | marker_line, index|
-			if marker_line.count(marker) == 1 && marker_line.count(" ") == 2
-				puts marker_line
+		empty_spots = []
+		blah
+		blah.each do |spot|
+			if ttt_board[spot] != p2_marker
+				empty_spots.push(spot)
 			end
 		end
-		
-		pick_to_force_block = marker_lines.index(" ")
-		pick_marker = marker_lines.index(" ")
-		# marker_lines(pick_marker) = marker
-		check_spot_for_fork_index = marker_lines.index(" ")
-		check_spot_for_fork = block_fork_positions[e][check_spot_for_fork_index]
-
-		if check_spot_for_fork == result
-			choice = result
-		elsif check_spot_for_fork != result
-			choice = pick_to_force_block
-		else
-			choice = 10
-		end
-		choice
-
+		empty_spots.uniq
+		result = empty_spots.shift
+		result = result + 1
 	end
+
+	def check_for_center(ttt_board)
+		if ttt_board[4] = " "
+			move = 4
+		else
+			move = 10
+		end
+		move = move + 1
+	end
+
+	def check_for_corner
+		if ttt_board[0] == p2_marker
+			move = 8
+		elsif ttt_board[2] == p2_marker
+			move = 6
+		elsif ttt_board[6] == p2_marker
+			move = 2
+		elsif ttt_board[8] == p2_marker
+			move = 0
+		else
+			move = 10
+		end
+		move = move + 1
+	end
+
+	def check_for_empty_corner(ttt_board)
+
+		corners = [0,2,6,8]
+		answer = []
+
+		corners.each do |corner|
+			if corner == " "
+				answer.push(corner)
+			end
+		end
+		answer = answer.shift
+		answer = answer + 1
+	end
+
+	def check_for_empty_side(ttt_board)
+
+		sides = [1,3,5,7]
+		answer = []
+
+		sides.each do |side|
+			if side == " "
+				answer.push(side)
+			end
+		end
+		answer = answer.shift
+		answer = answer + 1
+	end
+			
 end
 
-player = UnbeatableAI.new("O")
-ttt_board = ["X"," "," "," "," ","","X","O","X"]
 
 
 
