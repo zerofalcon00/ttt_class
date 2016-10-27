@@ -26,3 +26,16 @@ h1 {
 form {
 	text-align: center;
 }
+.board  {
+	background: white;
+	font-size: -webkit-xxx-large;
+	border: none;
+}
+
+input[value="X"] {
+	color: red;
+}
+
+input[value="O"] {
+	color: blue;
+}

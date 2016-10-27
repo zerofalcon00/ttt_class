@@ -93,7 +93,7 @@ get "/get_move" do
 end
 
 post '/get_move' do
-	move = params[:move_spot].to_i
+	move = params[:square].to_i
 
 	if session[:board].valid_spot?(move)
 		redirect '/make_move?move=' + move.to_s
