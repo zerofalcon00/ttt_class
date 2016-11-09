@@ -1,0 +1,5 @@
+# This file contains the web version of tic-tac-toe
+
+# So if you run the .\web_ttt_app.rb you will get the web app of tic-tac-toe.
+
+# Currently you have 3 options of an opponent CPU which is the random ai, Human which allows you to play another human, and CPU(hard) this current ai DOES NOT WORK. this is the unbeatable ai which is up to the block fork portion of the code following the strategy from wikipedia.
