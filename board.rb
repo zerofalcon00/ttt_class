@@ -3,7 +3,11 @@ class Board
 	attr_accessor :ttt_board
 
 	def initialize()
-		@ttt_board = [" "," "," "," "," "," "," "," "," "]
+		# empty_spaces = (number * number)
+
+		# @ttt_board = Array.new(empty_spaces, " ")
+		@ttt_board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+	
 	end
 
 	def board_with_positions()

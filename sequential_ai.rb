@@ -1,13 +1,14 @@
 class SequentialAI
 
-	attr_reader :marker
+	attr_reader :marker, :name
 	
-	def initialize(marker)
+	def initialize(marker, name)
+		@name = name
 		@marker = marker
 	end
 
 	def get_move(board)
-		board.index(" ")
+		answer = (board.index(" ") + 1)
 	end
 
 	# def valid_space(board, choice)

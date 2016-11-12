@@ -66,9 +66,13 @@ post '/get_p2' do
 		user = "CPU"
 		session[:p2] = RandomAI.new("O", user)
 		redirect '/get_move'
-	else player_2 == "class_unbeatable_ai"
-		user = "CPU(hard)"
+	elsif player_2 == "class_unbeatable_ai"
+		user = "CPU"
 		session[:p2] = UnbeatableAI.new("O", user)
+		redirect '/get_move'
+	else player_2 == "sequential_ai"
+		user = "CPU"
+		session[:p2] = SequentialAI.new("O", user)
 		redirect '/get_move'
 	end
 end
