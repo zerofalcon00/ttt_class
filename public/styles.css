@@ -39,3 +39,19 @@ input[value="X"] {
 input[value="O"] {
 	color: blue;
 }
+
+.welcome_text {
+	margin-top: 15%;
+}
+
+.start_button {
+	margin-top: 5%;
+}
+
+.player_1_text {
+	margin-top: 20%;
+}
+
+.p2_text {
+	margin-top: 20%;
+}

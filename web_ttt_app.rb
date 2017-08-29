@@ -13,11 +13,15 @@ load "./local_env.rb" if File.exists?("./local_env.rb")
 
 enable :sessions
 
-get "/" do
+get '/' do
+	erb :intro
+end
+
+post '/next' do
 	erb :ask_to_play
 end
 
-post "/output" do
+post '/output' do
 	session[:board] = Board.new
 	p1_name = params[:player_1]
 	session[:p1] = Human.new("X", p1_name)
