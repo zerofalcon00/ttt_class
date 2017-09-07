@@ -1,3 +1,4 @@
+
 #top-center, #middle-center, #bottom-center {
 	border-left: 1px solid black;
 	border-right: 1px solid black;
@@ -8,9 +9,8 @@
 }
 
 #board tr td{
-	width: 80px; 
-	height:80px;
-	font-size: 30px;
+	width: 12vw; 
+	height: 12vw;
 	text-align: center;
 }
 #board {
@@ -28,7 +28,7 @@ form {
 }
 .board  {
 	background: white;
-	font-size: -webkit-xxx-large;
+	font-size: 10vw;
 	border: none;
 }
 
@@ -40,18 +40,63 @@ input[value="O"] {
 	color: blue;
 }
 
-.welcome_text {
+.intro_container {
 	margin-top: 15%;
 }
 
 .start_button {
+	width: 15vw;
+    height: 5vw;
+    font-size: 2vw;
+    border-radius: 25%;
 	margin-top: 5%;
 }
 
-.player_1_text {
+.ask_player_container {
 	margin-top: 20%;
 }
 
+.p2_human_selector_container {
+	margin-top: 20%
+}
+
 .p2_text {
-	margin-top: 20%;
+	font-size: 4vw
+}
+
+.welcome_text {
+	font-size: 4vw
+}
+
+.player_1_text {
+	font-size: 4vw;
+}
+
+.player1_name_input {
+	text-align: center;
+	width: 30vw;
+    height: 3vw;
+    font-size: 3vw;
+}
+
+.player1_name_submit {
+    margin: 3%;
+    width: 15vw;
+    height: 5vw;
+    font-size: 2vw;
+    border-radius: 25%;
+}
+
+.human_select_drop {
+    width: 10vw;
+    height: 3vw;
+    font-size: 2vw;
+}
+
+.human_select_submit {
+	margin-top: 2vw;
+	width: 15vw;
+    height: 5vw;
+    font-size: 2vw;
+    border-radius: 25%;
 }

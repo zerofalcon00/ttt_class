@@ -62,11 +62,23 @@ get '/get_p2' do
 	# end
 end
 
-post '/get_p2' do
-	player_2 = params[:player_2]
-	if player_2 == "human"
+post '/get_p2_human' do
+	player_2 = params[:player_2_human_selector]
+	if player_2 == "yes"
 		erb :get_p2_name
-	elsif player_2 == "random_ai"
+	else
+
+		redirect '/get_p2_difficulty'
+	end
+end
+
+get '/get_p2_difficulty' do
+	erb :get_p2_difficulty
+end
+
+post '/get_p2' do
+	player_2 = params[:player_2_difficulty_selector]
+	if player_2 == "random_ai"
 		user = "CPU"
 		session[:p2] = RandomAI.new("O", user)
 		redirect '/get_move'

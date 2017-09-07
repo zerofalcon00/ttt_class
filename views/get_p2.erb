@@ -1,13 +1,20 @@
+<div class='p2_human_selector_container'>
+	<p class="p2_text">Will there be a second human player?</p>
+	<form action = "/get_p2_human" method = "post">
+		
+		<select name = "player_2_human_selector" class="human_select_drop">
+		<!-- 	<option value="sequential_ai">sequential_ai</option> -->
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select><br><br>
 
-<form action = "/get_p2" method = "post">
-	<p class="p2_text">Will there be a second player?</p>
-	<select name = "player_2">
-	<!-- 	<option value="sequential_ai">sequential_ai</option> -->
+		<input type = "submit" class='human_select_submit'>
+	</form>
+</div>
+
+<!-- 
 		<option value="random_ai">CPU</option>
 		<option value="human">human</option>
 		<option value="class_unbeatable_ai">CPU(hard)</option>
 		<option value="sequential_ai">CPU(easy)</option>
-	</select><br><br>
-
-<input type = "submit">
-</form>
+ -->
